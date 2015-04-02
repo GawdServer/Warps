@@ -1,0 +1,9 @@
+{
+  "name": "Warps",
+  "version": "1.0",
+  "mainClass": "tk.coolv1994.plugins.warps.Warps",
+  "commands": {
+    "warp": "tk.coolv1994.plugins.warps.CommandWarp",
+    "setwarp": "tk.coolv1994.plugins.warps.CommandSetWarp"
+  }
+}
