@@ -1,16 +1,37 @@
 package tk.coolv1994.plugins.warps;
 
-import tk.coolv1994.gawdserver.plugin.Plugin;
+import tk.coolv1994.gawdapi.plugin.Plugin;
 
 import java.io.*;
 import java.util.Properties;
+import java.util.Set;
 
 /**
  * Created by Vinnie on 2/2/2015.
  */
 public class Warps implements Plugin {
-    private static final File warpFile = new File("./plugins/Warps/warps.txt");
-    public static final Properties warps = new Properties();
+    private final File warpFile = new File("./plugins/Warps/warps.txt");
+    private static Properties warps;
+
+    public Warps() {
+        warps = new Properties();
+    }
+
+    public static boolean hasWarp(String name) {
+        return warps.containsKey(name);
+    }
+
+    public static String getWarp(String name) {
+        return warps.getProperty(name);
+    }
+
+    public static Set<Object> getWarpSet() {
+        return warps.keySet();
+    }
+
+    public static void setWarp(String name, String coords) {
+        warps.setProperty(name, coords);
+    }
 
     private void loadWarps() {
         try {
