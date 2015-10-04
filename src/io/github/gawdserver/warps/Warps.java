@@ -1,16 +1,20 @@
-package tk.coolv1994.plugins.warps;
+package io.github.gawdserver.warps;
 
-import tk.coolv1994.gawdapi.plugin.Plugin;
+import io.github.gawdserver.api.plugin.Plugin;
+import io.github.gawdserver.api.plugin.PluginDir;
 
 import java.io.*;
 import java.util.Properties;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Vinnie on 2/2/2015.
  */
 public class Warps implements Plugin {
-    private final File warpFile = new File("./plugins/Warps/warps.txt");
+    public static final Logger logger = Logger.getLogger("Warps");
+    private final File warpFile = new File(PluginDir.getPluginDir(), "Warps/warps.txt");
     private static Properties warps;
 
     public Warps() {
@@ -39,16 +43,16 @@ public class Warps implements Plugin {
         } catch (FileNotFoundException e) {
             warpFile.getParentFile().mkdirs();
             saveWarps();
-        } catch (IOException e) {
-            System.out.println("Error loading warps.\n" + e.getMessage());
+        } catch (IOException ex) {
+            logger.log(Level.SEVERE, "Error loading warps.", ex);
         }
     }
 
     private void saveWarps() {
         try {
             warps.store(new FileOutputStream(warpFile), "Warps (name=x y z)");
-        } catch (IOException e) {
-            System.out.println("Error saving warps.\n" + e.getMessage());
+        } catch (IOException ex) {
+            logger.log(Level.SEVERE, "Error saving warps.", ex);
         }
     }
 

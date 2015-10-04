@@ -1,0 +1,14 @@
+{
+	"commands": {
+		"warp": {
+			"description": "Warp to a location.",
+			"usage": "!warp <name>",
+			"permission": "warps.use"
+		},
+		"setwarp": {
+			"description": "Set a warp location.",
+			"usage": "!setwarp <name> <x> <y> <z>",
+			"permission": "warps.set"
+		}
+	}
+}
